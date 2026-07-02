@@ -1,60 +1,93 @@
-# Hi, I'm Butcha Laxmana Rao 👋
-### Data Analytics & GenAI Engineer
+# laxman243ops.github.io
 
-B.Tech Computer Science & Engineering graduate with hands-on experience building end-to-end data analytics systems, natural language processing (NLP) pipelines, and cloud-hosted applications. I specialize in leveraging Generative AI frameworks to automate insight generation and optimize decision-making workflows.
+Personal portfolio for **Butcha Laxmana Rao** — Data Analytics & Gen AI —
+built as a static site for GitHub Pages. No build step, no framework:
+just `index.html`, `style.css`, and vanilla JS.
 
-🌐 **View My Live Portfolio:** [laxman243ops.github.io](https://github.io)
-
----
-
-### 🚀 Technical Expertise
-
-*   **Languages & Frameworks:** Python, SQL, JavaScript, HTML/CSS, Pandas, Flask, REST APIs
-*   **Data Analytics & AI:** Data Analysis, Data Visualization, Machine Learning, NLP, Statistical Modeling, Prompt Engineering, Gen AI (OpenAI API), LightGBM, Scikit-learn, Sentence-Transformers
-*   **Cloud & Databases:** AWS (EC2, S3, Lambda, DynamoDB, SNS, RDS, IAM, VPC), MySQL
-*   **Tools:** Tableau, Excel, Git, VS Code
+**Live site:** https://laxman243ops.github.io
+**Source:** https://github.com/laxman243ops/laxman243ops.github.io
 
 ---
 
-### 📊 Key Highlights
+## What's in here
 
-*   🎓 **Education:** B.Tech in Computer Science & Engineering (CGPA: 9.11/10.0) | Aditya Institute of Technology & Management
-*   🏆 **Achievements:** GATE 2026 Qualified (Computer Science)
-*   💼 **Experience:** AWS Cloud Virtual Intern via AICTE-Eduskills
+```
+.
+├── index.html          → all page content and structure
+├── style.css           → the entire design system (colors, type, layout, animation)
+├── assets/
+│   ├── profile-1.jpg   → hero photo (add this)
+│   ├── profile-2.jpg   → about-section photo (add this)
+│   └── intro.mp3        → optional voice intro clip (add this)
+└── README.md
+```
 
----
+## Features
 
-### 🛠️ Featured Engineering Projects
+- **Dashboard-styled design** — dark, graph-paper background, teal/amber accents,
+  monospace data labels, self-drawing hero chart.
+- **Click-to-expand detail modals** — every project, the internship, education,
+  and each certification opens a full breakdown when clicked (or focused + Enter).
+- **Animated skill bars & stat counters** that fill in as you scroll to them.
+- **Voice-reactive hero photo** — add a short `assets/intro.mp3` recording of
+  yourself and the play button shows a live soundwave that reacts to your
+  actual voice, with the photo frame glowing in sync. If no audio file is
+  present, the whole widget hides itself automatically — nothing breaks.
+- Fully responsive, keyboard-navigable, and respects `prefers-reduced-motion`.
 
-#### 📦 [E-Commerce Sales Analytics Dashboard](https://github.com) *(Ongoing)*
-*   **Description:** Analyzing transactional datasets to identify purchasing behavior, customer retention matrix, and revenue drops using Python and SQL.
-*   **GenAI Integration:** Connecting OpenAI API frameworks to auto-generate human-readable narrative context cards directly inside interactive Tableau dashboards.
-*   **Tech Stack:** `Python`, `Pandas`, `Tableau`, `SQL`, `OpenAI API`
+## Adding your photos and voice clip
 
-#### 🤖 [Student Performance Analytics Platform](https://github.com) *(Ongoing)*
-*   **Description:** Building predictive modeling architectures that identify at-risk student academic performance drops using structured behavioral logs.
-*   **GenAI Integration:** Using LLM prompting techniques to generate individual, automated text feedback cards designed to target specific student weaknesses.
-*   **Tech Stack:** `Python`, `Pandas`, `Scikit-learn`, `Gen AI`, `Flask`
+1. Create an `assets/` folder next to `index.html`.
+2. Drop in:
+   - `profile-1.jpg` — used as the circular hero photo.
+   - `profile-2.jpg` — used as the tilted photo in the About section.
+   - `intro.mp3` (optional) — a short "Hi, I'm Laxman…" recording, used for
+     the voice-reactive play button in the hero.
+3. Commit and push. That's it — no code changes needed. If an image or the
+   audio file is missing, the page falls back gracefully (a monogram badge
+   for photos, a hidden widget for audio) instead of showing a broken icon.
 
-#### 📝 [Automated Essay Evaluation System](https://github.com)
-*   **Description:** Designed and engineered a modular natural language processing pipeline to score academic essays based on semantic intent, logical flow, and grammar.
-*   **Tech Stack:** `Python`, `Flask`, `Sentence-Transformers`, `LightGBM`, `Scikit-learn`, `NLP`
+> Tip: square images work best for `profile-1.jpg` (it's cropped into a
+> circle); `profile-2.jpg` works well as a portrait-oriented (4:5) shot.
 
-#### 📈 [Stocker - Cloud Stock Analytics Engine](https://github.com)
-*   **Description:** Deployed a highly responsive cloud application tracking mock stock assets, monitoring portfolio risk, and triggering immediate SMS/Email updates based on target data boundaries.
-*   **Tech Stack:** `Python (Flask)`, `AWS EC2`, `DynamoDB`, `Amazon SNS`, `JavaScript`
+## Editing content
 
----
+Everything lives in two places in `index.html`:
 
-### 📜 Verified Industry Simulations
+- The **visible cards/sections** (projects, experience, certifications) —
+  edit the text directly in the HTML.
+- The **`DETAILS` object** near the bottom of the `<script>` block — this
+  powers the "click for more" modal for each project, the internship,
+  education, and every certification. Each entry has an `eyebrow`, `title`,
+  `tags`, `summary`, `points` (bullet list), and optional `links`. Keep the
+  `data-detail="proj1"` attribute on a card in sync with its key in
+  `DETAILS` (e.g. `proj1`) if you rename anything.
 
-*   **TATA Forage:** GenAI Powered Data Analytics — Interpreting structural datasets using AI.
-*   **Deloitte Australia:** Data Analytics Job Simulation — Crafting strategic visualization sheets.
-*   **Commonwealth Bank:** Cybersecurity & Data Analytics — Algorithmic transaction threat parsing.
+Repository links currently point to
+`https://github.com/laxman243ops?tab=repositories`. Once each project has
+its own repo, replace the matching `href` in both the project card and its
+`DETAILS` entry with the direct repo URL.
 
----
+## Deploying on GitHub Pages
 
-### 📫 Connect With Me
+1. Push `index.html`, `style.css`, `README.md`, and your `assets/` folder to
+   the `main` branch of `laxman243ops/laxman243ops.github.io`.
+2. In the repo, go to **Settings → Pages** and confirm the source is set to
+   deploy from `main` (a `username.github.io` repo usually does this
+   automatically).
+3. Your site is live at `https://laxman243ops.github.io` within a few minutes.
 
-*   **LinkedIn:** [://linkedin.com](https://://linkedin.com)
-*   **Email:** [laxmanraobutcha243@gmail.com](mailto:laxmanraobutcha243@gmail.com)
+## Running locally
+
+No build tools required — just serve the folder:
+
+```bash
+python3 -m http.server 8000
+# then open http://localhost:8000
+```
+
+## Credits
+
+Design and build assembled with Claude. Content sourced from Butcha Laxmana
+Rao's resume (June 2026) — update `index.html` directly as your experience,
+projects, and certifications grow.
