@@ -15,10 +15,9 @@ just `index.html`, `style.css`, and vanilla JS.
 .
 ├── index.html          → all page content and structure
 ├── style.css           → the entire design system (colors, type, layout, animation)
-├── assets/
-│   ├── dpe.jpg          → hero photo (included)
-│   ├── background.jpeg  → about-section photo (included)
-│   └── intro.mp3         → optional voice intro clip (add this yourself — see below)
+├── dpe.jpg              → hero photo (included)
+├── background.jpeg      → about-section photo (included)
+├── intro.mp3             → optional voice intro clip (add this yourself — see below)
 └── README.md
 ```
 
@@ -37,7 +36,8 @@ just `index.html`, `style.css`, and vanilla JS.
 
 ## Photos
 
-Your two photos are already in `assets/` and wired into `index.html`:
+Your two photos live at the repo root and are already wired into
+`index.html`:
 
 - `dpe.jpg` — the circular hero photo.
 - `background.jpeg` — the tilted photo in the About section.
@@ -58,9 +58,9 @@ you. Two ways to get one:
    can produce a natural-sounding clip from typed text if you'd rather not
    record your own voice.
 
-Drop the file in as `assets/intro.mp3`, commit, and the play button in the
-hero will start showing a live waveform that reacts to it — no code changes
-needed. Until that file exists, the voice-intro widget stays hidden
+Upload the file to the repo root as `intro.mp3`, commit, and the play button
+in the hero will start showing a live waveform that reacts to it — no code
+changes needed. Until that file exists, the voice-intro widget stays hidden
 automatically.
 
 ## Editing content
