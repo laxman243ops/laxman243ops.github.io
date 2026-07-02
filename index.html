@@ -1,163 +1,415 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Butcha Laxmana Rao | Data Analytics & GenAI Portfolio</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Laxman — Data Analyst Portfolio</title>
+<meta name="description" content="Data analyst portfolio — projects, skills, and case studies in SQL, Python, and data visualization.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- Hero / Profile Section with Animated Image -->
-    <header>
-        <div class="container hero-container">
-            
-            <!-- Animated Profile Image Column -->
-            <div class="profile-image-wrapper">
-                <img src="dpe.jpg" alt="Butcha Laxmana Rao" class="animated-profile-pic">
-            </div>
+<div class="grid-backdrop" aria-hidden="true"></div>
 
-            <!-- Profile Text Column -->
-            <div class="profile-text">
-                <h1>BUTCHA LAXMANA RAO</h1>
-                <p class="subtitle">Data Analytics & GenAI Engineer</p>
-                <p class="bio">B.Tech CSE graduate with hands-on experience building end-to-end analytics systems, NLP pipelines, and cloud-based data applications. Skilled in leveraging Generative AI tools for data interpretation, visualization, and insight generation.</p>
-                <div class="social-links">
-                    <a href="https://github.com" target="_blank">GitHub</a>
-                    <a href="https://linkedin.com" target="_blank">LinkedIn</a>
-                    <a href="mailto:laxmanraobutcha243@gmail.com">Email</a>
-                </div>
-            </div>
+<!-- ===== NAV ===== -->
+<header class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="#top" class="nav-mark">
+      <span class="nav-mark-bracket">&lt;</span>laxman<span class="nav-mark-bracket">/&gt;</span>
+    </a>
+    <nav class="nav-links" id="navLinks">
+      <a href="#about"><span class="path">01</span>about</a>
+      <a href="#skills"><span class="path">02</span>skills</a>
+      <a href="#projects"><span class="path">03</span>projects</a>
+      <a href="#experience"><span class="path">04</span>experience</a>
+      <a href="#contact"><span class="path">05</span>contact</a>
+    </nav>
+    <a href="#contact" class="nav-cta">Let's talk</a>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
 
+<main id="top">
+
+  <!-- ===== HERO ===== -->
+  <section class="hero">
+    <div class="hero-inner">
+      <p class="eyebrow"><span class="dot-live"></span>status: open to opportunities</p>
+      <h1 class="hero-title">
+        I turn raw data<br>
+        into <span class="hl">decisions</span> worth<br>
+        making.
+      </h1>
+      <p class="hero-sub">
+        Data Analyst focused on SQL, Python, and visualization —
+        finding the signal in messy datasets and presenting it so
+        people actually act on it.
+      </p>
+      <div class="hero-actions">
+        <a href="#projects" class="btn btn-primary">View projects</a>
+        <a href="https://github.com/laxman243ops" target="_blank" rel="noopener" class="btn btn-ghost">
+          GitHub profile ↗
+        </a>
+      </div>
+
+      <div class="hero-stats">
+        <div class="stat">
+          <span class="stat-num" data-count="12">0</span>
+          <span class="stat-label">projects shipped</span>
         </div>
-    </header>
-
-    <!-- Key Resume Metrics Section -->
-    <section class="metrics container">
-        <div class="metric-card">
-            <h3>9.11 / 10</h3>
-            <p>B.Tech CGPA</p>
+        <div class="stat">
+          <span class="stat-num" data-count="6">0</span>
+          <span class="stat-label">tools mastered</span>
         </div>
-        <div class="metric-card">
-            <h3>GATE 2026</h3>
-            <p>CS Qualified</p>
+        <div class="stat">
+          <span class="stat-num" data-count="40000" data-suffix="+">0</span>
+          <span class="stat-label">rows wrangled</span>
         </div>
-        <div class="metric-card">
-            <h3>AWS Cloud</h3>
-            <p>Certified Intern</p>
+      </div>
+    </div>
+
+    <div class="hero-chart" aria-hidden="true">
+      <svg viewBox="0 0 460 260" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <line x1="30" y1="20" x2="30" y2="220" stroke="var(--line)" stroke-width="1"/>
+        <line x1="30" y1="220" x2="440" y2="220" stroke="var(--line)" stroke-width="1"/>
+        <g stroke="var(--line-faint)" stroke-width="1">
+          <line x1="30" y1="170" x2="440" y2="170"/>
+          <line x1="30" y1="120" x2="440" y2="120"/>
+          <line x1="30" y1="70" x2="440" y2="70"/>
+        </g>
+        <polyline class="chart-area" points="30,220 30,180 90,190 150,140 210,155 270,100 330,115 390,60 440,70 440,220 30,220" />
+        <polyline class="chart-line" points="30,180 90,190 150,140 210,155 270,100 330,115 390,60 440,70" />
+        <circle class="chart-point" cx="390" cy="60" r="4.5"/>
+        <g class="chart-bars">
+          <rect x="55" y="235" width="6" height="0" data-h="14"/>
+          <rect x="115" y="235" width="6" height="0" data-h="22"/>
+          <rect x="175" y="235" width="6" height="0" data-h="10"/>
+          <rect x="235" y="235" width="6" height="0" data-h="28"/>
+          <rect x="295" y="235" width="6" height="0" data-h="18"/>
+          <rect x="355" y="235" width="6" height="0" data-h="30"/>
+          <rect x="415" y="235" width="6" height="0" data-h="24"/>
+        </g>
+      </svg>
+      <span class="chart-tag">query_result.csv · live</span>
+    </div>
+  </section>
+
+  <!-- ===== ABOUT ===== -->
+  <section class="section" id="about">
+    <div class="section-head">
+      <span class="section-num">01</span>
+      <h2>About</h2>
+    </div>
+    <div class="about-grid">
+      <p class="about-text">
+        I'm a data analyst who likes questions with real stakes behind them —
+        which channel is actually driving growth, why churn spiked last quarter,
+        what a dataset is quietly trying to tell us. My process starts with the
+        question, not the dashboard: define the problem, source and clean the
+        data, analyze it honestly, and present findings someone can act on
+        without a translator.
+      </p>
+      <ul class="about-facts">
+        <li><span class="path">based_in</span>India</li>
+        <li><span class="path">focus</span>SQL · Python · Visualization</li>
+        <li><span class="path">currently</span>Building portfolio projects</li>
+        <li><span class="path">reachable_at</span><a href="mailto:you@example.com">you@example.com</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ===== SKILLS ===== -->
+  <section class="section" id="skills">
+    <div class="section-head">
+      <span class="section-num">02</span>
+      <h2>Skills</h2>
+    </div>
+    <p class="section-lede">Proficiency, self-rated and updated as I go — not a badge wall.</p>
+
+    <div class="skills-grid">
+      <div class="skill-bar" data-level="85">
+        <div class="skill-top"><span>SQL</span><span class="skill-pct">0%</span></div>
+        <div class="skill-track"><div class="skill-fill"></div></div>
+      </div>
+      <div class="skill-bar" data-level="80">
+        <div class="skill-top"><span>Python (pandas, numpy)</span><span class="skill-pct">0%</span></div>
+        <div class="skill-track"><div class="skill-fill"></div></div>
+      </div>
+      <div class="skill-bar" data-level="75">
+        <div class="skill-top"><span>Excel / Google Sheets</span><span class="skill-pct">0%</span></div>
+        <div class="skill-track"><div class="skill-fill"></div></div>
+      </div>
+      <div class="skill-bar" data-level="70">
+        <div class="skill-top"><span>Data Visualization (Tableau)</span><span class="skill-pct">0%</span></div>
+        <div class="skill-track"><div class="skill-fill"></div></div>
+      </div>
+      <div class="skill-bar" data-level="65">
+        <div class="skill-top"><span>Statistics</span><span class="skill-pct">0%</span></div>
+        <div class="skill-track"><div class="skill-fill"></div></div>
+      </div>
+      <div class="skill-bar" data-level="60">
+        <div class="skill-top"><span>Presentation &amp; Communication</span><span class="skill-pct">0%</span></div>
+        <div class="skill-track"><div class="skill-fill"></div></div>
+      </div>
+    </div>
+
+    <div class="tool-chips">
+      <span>PostgreSQL</span><span>MySQL</span><span>Power BI</span><span>Tableau</span>
+      <span>Jupyter</span><span>Git &amp; GitHub</span><span>Google Analytics</span><span>R</span>
+    </div>
+  </section>
+
+  <!-- ===== PROJECTS ===== -->
+  <section class="section" id="projects">
+    <div class="section-head">
+      <span class="section-num">03</span>
+      <h2>Projects</h2>
+    </div>
+    <p class="section-lede">Replace these with your own repos — swap the title, tags, description, and links.</p>
+
+    <div class="projects-grid">
+
+      <article class="project-card">
+        <div class="project-top">
+          <span class="path">PROJECT_01</span>
+          <span class="project-tags"><span>SQL</span><span>Excel</span></span>
         </div>
-    </section>
-
-    <!-- Core Technical Skills Grid -->
-    <section class="skills container">
-        <h2>Technical Expertise</h2>
-        <div class="skills-grid">
-            <div class="skill-category">
-                <h3>Languages & Tools</h3>
-                <p>Python, SQL, JavaScript, HTML/CSS, Pandas, Flask, REST APIs, Excel, Tableau, Git, VS Code</p>
-            </div>
-            <div class="skill-category">
-                <h3>Data Analytics & AI</h3>
-                <p>Data Analysis, Data Visualization, Machine Learning, NLP, Statistical Modeling, Prompt Engineering, Gen AI (OpenAI API), LightGBM, Scikit-learn, Sentence-Transformers</p>
-            </div>
-            <div class="skill-category">
-                <h3>Cloud & Databases</h3>
-                <p>AWS (EC2, S3, Lambda, DynamoDB, SNS, RDS, IAM, VPC), MySQL</p>
-            </div>
+        <h3>Retail Sales Performance Dashboard</h3>
+        <p>Cleaned and modeled three years of regional sales data, then built a
+          dashboard surfacing underperforming categories and seasonal demand
+          shifts for a fictional retail chain.</p>
+        <div class="project-meta">
+          <span>Data Cleaning</span><span>·</span><span>KPI Design</span><span>·</span><span>Reporting</span>
         </div>
-    </section>
-
-    <!-- Projects Portfolio Layout -->
-    <section class="projects container">
-        <h2>Featured Engineering Projects</h2>
-        <div class="grid">
-            
-            <!-- Project 1 -->
-            <div class="project-card">
-                <div>
-                    <span class="tag">Analytics / GenAI</span>
-                    <h3>E-Commerce Sales Analytics Dashboard</h3>
-                    <p>Analyzing e-commerce transaction data to uncover sales trends, customer segments, and revenue drivers. Building interactive Tableau dashboards with Gen AI-assisted narrative summaries to communicate insights.</p>
-                    <div class="tech-stack">
-                        <span>Python</span> <span>Pandas</span> <span>Tableau</span> <span>SQL</span> <span>OpenAI API</span>
-                    </div>
-                </div>
-                <div class="project-links">
-                    <a href="https://github.com" target="_blank">View Code</a>
-                    <span class="status-badge">Ongoing</span>
-                </div>
-            </div>
-
-            <!-- Project 2 -->
-            <div class="project-card">
-                <div>
-                    <span class="tag">Predictive ML / GenAI</span>
-                    <h3>Student Performance Analytics</h3>
-                    <p>Developing a predictive machine learning model to identify at-risk students based on engagement data from Pluto Academy. Integrating Gen AI to auto-generate personalized feedback reports to improve student outcomes.</p>
-                    <div class="tech-stack">
-                        <span>Python</span> <span>Pandas</span> <span>Scikit-learn</span> <span>Gen AI</span> <span>Flask</span>
-                    </div>
-                </div>
-                <div class="project-links">
-                    <a href="https://github.com" target="_blank">View Code</a>
-                    <span class="status-badge">Ongoing</span>
-                </div>
-            </div>
-
-            <!-- Project 3 -->
-            <div class="project-card">
-                <div>
-                    <span class="tag">NLP / Machine Learning</span>
-                    <h3>Automated Essay Evaluation System</h3>
-                    <p>Built a custom NLP pipeline evaluating essays on semantic relevance, grammar, and structural quality. Utilizes machine learning frameworks to generate real-time, actionable corrective feedback loops.</p>
-                    <div class="tech-stack">
-                        <span>Python</span> <span>Flask</span> <span>Sentence-Transformers</span> <span>LightGBM</span> <span>Scikit-learn</span>
-                    </div>
-                </div>
-                <div class="project-links">
-                    <a href="https://github.com" target="_blank">View Code</a>
-                </div>
-            </div>
-
-            <!-- Project 4 -->
-            <div class="project-card">
-                <div>
-                    <span class="tag">Cloud / DevOps</span>
-                    <h3>Stocker - Stock Trading Analytics App</h3>
-                    <p>Deployed an end-to-end full-stack analytics application for real-time stock tracking and portfolio management. Integrated automated Amazon SNS-based threshold alerts on AWS cloud servers.</p>
-                    <div class="tech-stack">
-                        <span>Python (Flask)</span> <span>AWS EC2</span> <span>DynamoDB</span> <span>SNS</span> <span>JavaScript</span>
-                    </div>
-                </div>
-                <div class="project-links">
-                    <a href="https://github.com" target="_blank">View Code</a>
-                </div>
-            </div>
-
+        <div class="project-links">
+          <a href="#" target="_blank" rel="noopener">Case study ↗</a>
+          <a href="#" target="_blank" rel="noopener">Repository ↗</a>
         </div>
-    </section>
+      </article>
 
-    <!-- Professional Experience & Virtual Internships -->
-    <section class="experience container">
-        <h2>Experience & Certifications</h2>
-        <div class="exp-timeline">
-            <div class="timeline-item">
-                <h4>AWS Cloud Virtual Intern — AICTE-Eduskills</h4>
-                <p class="timeline-date">May – Jul 2025</p>
-                <p>Designed and managed cloud data applications using AWS core services (EC2, S3, RDS, Lambda, IAM, VPC) while applying cloud architecture best practices for system security and cost optimization.</p>
-            </div>
-            <div class="timeline-item">
-                <h4>Data Industry Simulations</h4>
-                <p class="timeline-meta"><strong>TATA Forage:</strong> GenAI Powered Data Analytics — Generative AI for data interpretation.</p>
-                <p class="timeline-meta"><strong>Deloitte Australia:</strong> Data Analytics Job Simulation (Excel & Tableau dashboards).</p>
-                <p class="timeline-meta"><strong>Commonwealth Bank:</strong> Cybersecurity & Data Analytics threat analysis.</p>
-            </div>
+      <article class="project-card">
+        <div class="project-top">
+          <span class="path">PROJECT_02</span>
+          <span class="project-tags"><span>Python</span><span>Pandas</span></span>
         </div>
-    </section>
+        <h3>Customer Churn Analysis</h3>
+        <p>Explored a subscription dataset to identify the strongest predictors
+          of churn, then visualized cohort retention curves to guide a
+          retention strategy.</p>
+        <div class="project-meta">
+          <span>EDA</span><span>·</span><span>Cohort Analysis</span><span>·</span><span>Visualization</span>
+        </div>
+        <div class="project-links">
+          <a href="#" target="_blank" rel="noopener">Case study ↗</a>
+          <a href="#" target="_blank" rel="noopener">Repository ↗</a>
+        </div>
+      </article>
 
-    <footer>
-        <p>&copy; 2026 Butcha Laxmana Rao. Hosted on GitHub Pages.</p>
-    </footer>
+      <article class="project-card">
+        <div class="project-top">
+          <span class="path">PROJECT_03</span>
+          <span class="project-tags"><span>Tableau</span><span>SQL</span></span>
+        </div>
+        <h3>City Bike-Share Demand Study</h3>
+        <p>Queried ride-level data to map demand by station, hour, and weather
+          condition, then built an interactive Tableau dashboard for
+          operations planning.</p>
+        <div class="project-meta">
+          <span>Data Modeling</span><span>·</span><span>Interactive Viz</span>
+        </div>
+        <div class="project-links">
+          <a href="#" target="_blank" rel="noopener">Case study ↗</a>
+          <a href="#" target="_blank" rel="noopener">Repository ↗</a>
+        </div>
+      </article>
+
+      <article class="project-card">
+        <div class="project-top">
+          <span class="path">PROJECT_04</span>
+          <span class="project-tags"><span>Python</span><span>Statistics</span></span>
+        </div>
+        <h3>A/B Test: Landing Page Redesign</h3>
+        <p>Ran a statistical significance test on conversion data from two
+          landing page variants and presented findings with a clear
+          go/no-go recommendation.</p>
+        <div class="project-meta">
+          <span>Hypothesis Testing</span><span>·</span><span>Reporting</span>
+        </div>
+        <div class="project-links">
+          <a href="#" target="_blank" rel="noopener">Case study ↗</a>
+          <a href="#" target="_blank" rel="noopener">Repository ↗</a>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ===== EXPERIENCE ===== -->
+  <section class="section" id="experience">
+    <div class="section-head">
+      <span class="section-num">04</span>
+      <h2>Experience &amp; Learning</h2>
+    </div>
+
+    <div class="timeline">
+      <div class="timeline-item">
+        <span class="timeline-dot"></span>
+        <div class="timeline-content">
+          <span class="path">2026</span>
+          <h4>Google Data Analytics Certificate</h4>
+          <p>Completed coursework covering the data analysis lifecycle,
+            SQL, R, Tableau, and case-study capstone projects.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <span class="timeline-dot"></span>
+        <div class="timeline-content">
+          <span class="path">2025 — 2026</span>
+          <h4>Independent Portfolio Projects</h4>
+          <p>Built self-directed analyses across retail, product, and
+            operations datasets to practice the full pipeline: clean,
+            analyze, visualize, present.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <span class="timeline-dot"></span>
+        <div class="timeline-content">
+          <span class="path">earlier</span>
+          <h4>Foundations</h4>
+          <p>Add your earlier education, roles, or relevant coursework here.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CONTACT ===== -->
+  <section class="section contact" id="contact">
+    <div class="section-head">
+      <span class="section-num">05</span>
+      <h2>Contact</h2>
+    </div>
+    <div class="contact-inner">
+      <p class="contact-lede">
+        Have a role, a project, or a dataset that needs a second look?
+        I'd like to hear about it.
+      </p>
+      <a href="mailto:you@example.com" class="contact-email">you@example.com</a>
+      <div class="contact-links">
+        <a href="https://github.com/laxman243ops" target="_blank" rel="noopener">GitHub ↗</a>
+        <a href="#" target="_blank" rel="noopener">LinkedIn ↗</a>
+        <a href="#" target="_blank" rel="noopener">Resume ↗</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <p>© <span id="year"></span> Laxman — built and deployed on GitHub Pages.</p>
+</footer>
+
+<script>
+// ---- Mobile nav ----
+const navToggle = document.getElementById('navToggle');
+const navLinks = document.getElementById('navLinks');
+navToggle.addEventListener('click', () => {
+  const open = navLinks.classList.toggle('open');
+  navToggle.classList.toggle('open', open);
+  navToggle.setAttribute('aria-expanded', open);
+});
+navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+  navLinks.classList.remove('open');
+  navToggle.classList.remove('open');
+}));
+
+// ---- Nav shadow on scroll ----
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 8);
+});
+
+// ---- Footer year ----
+document.getElementById('year').textContent = new Date().getFullYear();
+
+// ---- Reveal on scroll ----
+const revealTargets = document.querySelectorAll(
+  '.section-head, .about-text, .about-facts, .skills-grid, .tool-chips, .project-card, .timeline-item, .contact-inner, .section-lede'
+);
+revealTargets.forEach(el => el.classList.add('reveal'));
+
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('in-view');
+      io.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.15 });
+revealTargets.forEach(el => io.observe(el));
+
+// ---- Skill bars animate to level when in view ----
+const skillBars = document.querySelectorAll('.skill-bar');
+const skillIO = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const bar = entry.target;
+      const level = bar.dataset.level;
+      const fill = bar.querySelector('.skill-fill');
+      const pct = bar.querySelector('.skill-pct');
+      requestAnimationFrame(() => { fill.style.width = level + '%'; });
+      let current = 0;
+      const target = parseInt(level, 10);
+      const step = Math.max(1, Math.round(target / 40));
+      const tick = () => {
+        current = Math.min(target, current + step);
+        pct.textContent = current + '%';
+        if (current < target) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+      skillIO.unobserve(bar);
+    }
+  });
+}, { threshold: 0.4 });
+skillBars.forEach(bar => skillIO.observe(bar));
+
+// ---- Hero stat counters ----
+const stats = document.querySelectorAll('.stat-num');
+const statIO = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const el = entry.target;
+      const target = parseInt(el.dataset.count, 10);
+      const suffix = el.dataset.suffix || '';
+      let current = 0;
+      const step = Math.max(1, Math.round(target / 60));
+      const tick = () => {
+        current = Math.min(target, current + step);
+        el.textContent = current.toLocaleString() + suffix;
+        if (current < target) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+      statIO.unobserve(el);
+    }
+  });
+}, { threshold: 0.5 });
+stats.forEach(s => statIO.observe(s));
+
+// ---- Hero chart bars animate in ----
+window.addEventListener('load', () => {
+  document.querySelectorAll('.chart-bars rect').forEach((rect, i) => {
+    const h = parseFloat(rect.dataset.h);
+    setTimeout(() => {
+      rect.setAttribute('height', h);
+      rect.setAttribute('y', 220 - h);
+    }, 700 + i * 70);
+  });
+});
+</script>
 
 </body>
 </html>
