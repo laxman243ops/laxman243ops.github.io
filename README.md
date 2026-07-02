@@ -16,9 +16,9 @@ just `index.html`, `style.css`, and vanilla JS.
 ├── index.html          → all page content and structure
 ├── style.css           → the entire design system (colors, type, layout, animation)
 ├── assets/
-│   ├── profile-1.jpg   → hero photo (add this)
-│   ├── profile-2.jpg   → about-section photo (add this)
-│   └── intro.mp3        → optional voice intro clip (add this)
+│   ├── dpe.jpg          → hero photo (included)
+│   ├── background.jpeg  → about-section photo (included)
+│   └── intro.mp3         → optional voice intro clip (add this yourself — see below)
 └── README.md
 ```
 
@@ -35,20 +35,33 @@ just `index.html`, `style.css`, and vanilla JS.
   present, the whole widget hides itself automatically — nothing breaks.
 - Fully responsive, keyboard-navigable, and respects `prefers-reduced-motion`.
 
-## Adding your photos and voice clip
+## Photos
 
-1. Create an `assets/` folder next to `index.html`.
-2. Drop in:
-   - `profile-1.jpg` — used as the circular hero photo.
-   - `profile-2.jpg` — used as the tilted photo in the About section.
-   - `intro.mp3` (optional) — a short "Hi, I'm Laxman…" recording, used for
-     the voice-reactive play button in the hero.
-3. Commit and push. That's it — no code changes needed. If an image or the
-   audio file is missing, the page falls back gracefully (a monogram badge
-   for photos, a hidden widget for audio) instead of showing a broken icon.
+Your two photos are already in `assets/` and wired into `index.html`:
 
-> Tip: square images work best for `profile-1.jpg` (it's cropped into a
-> circle); `profile-2.jpg` works well as a portrait-oriented (4:5) shot.
+- `dpe.jpg` — the circular hero photo.
+- `background.jpeg` — the tilted photo in the About section.
+
+To swap either one later, just replace the file (keep the same filename) or
+update the `src` in `index.html` to point at a new file. If a photo is ever
+missing, the page falls back to a monogram badge instead of a broken icon.
+
+## Adding a voice clip
+
+There's no `intro.mp3` in this repo yet — I don't have a way to generate
+actual audio in this environment, so that part needs a real recording from
+you. Two ways to get one:
+
+1. **Record yourself** — a 5–10 second "Hi, I'm Laxman, welcome to my
+   portfolio" clip from your phone works fine. Export as `.mp3`.
+2. **Generate one with a TTS tool** — services like ElevenLabs or Play.ht
+   can produce a natural-sounding clip from typed text if you'd rather not
+   record your own voice.
+
+Drop the file in as `assets/intro.mp3`, commit, and the play button in the
+hero will start showing a live waveform that reacts to it — no code changes
+needed. Until that file exists, the voice-intro widget stays hidden
+automatically.
 
 ## Editing content
 
