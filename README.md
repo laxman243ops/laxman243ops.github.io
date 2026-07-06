@@ -1,11 +1,11 @@
-# laxman243ops.github.io
+# laxman243opsgithubio
 
 Personal portfolio for **Butcha Laxmana Rao** — Data Analytics & Gen AI —
 built as a static site for GitHub Pages. No build step, no framework:
 just `index.html`, `style.css`, and vanilla JS.
 
-**Live site:** https://laxman243ops.github.io
-**Source:** https://github.com/laxman243ops/laxman243ops.github.io
+**Live site:** <https://laxman243ops.github.io>
+**Source:** <https://github.com/laxman243ops/laxman243ops.github.io>
 
 ---
 
@@ -28,7 +28,7 @@ just `index.html`, `style.css`, and vanilla JS.
 - **Click-to-expand detail modals** — every project, the internship, education,
   and each certification opens a full breakdown when clicked (or focused + Enter).
 - **Animated skill bars & stat counters** that fill in as you scroll to them.
-- **Voice-reactive hero photo** — add a short `assets/intro.mp3` recording of
+- **Voice-reactive hero photo** — add a short `intro.mp3` recording of
   yourself and the play button shows a live soundwave that reacts to your
   actual voice, with the photo frame glowing in sync. If no audio file is
   present, the whole widget hides itself automatically — nothing breaks.
@@ -36,8 +36,7 @@ just `index.html`, `style.css`, and vanilla JS.
 
 ## Photos
 
-Your two photos live at the repo root and are already wired into
-`index.html`:
+Your two photos live at the repo root and are already wired into `index.html`:
 
 - `dpe.jpg` — the circular hero photo.
 - `background.jpeg` — the tilted photo in the About section.
@@ -48,9 +47,7 @@ missing, the page falls back to a monogram badge instead of a broken icon.
 
 ## Adding a voice clip
 
-There's no `intro.mp3` in this repo yet — I don't have a way to generate
-actual audio in this environment, so that part needs a real recording from
-you. Two ways to get one:
+There's no `intro.mp3` in this repo yet. Two ways to get one:
 
 1. **Record yourself** — a 5–10 second "Hi, I'm Laxman, welcome to my
    portfolio" clip from your phone works fine. Export as `.mp3`.
@@ -76,14 +73,13 @@ Everything lives in two places in `index.html`:
   `data-detail="proj1"` attribute on a card in sync with its key in
   `DETAILS` (e.g. `proj1`) if you rename anything.
 
-Repository links currently point to
-`https://github.com/laxman243ops?tab=repositories`. Once each project has
-its own repo, replace the matching `href` in both the project card and its
-`DETAILS` entry with the direct repo URL.
+Repository links currently point to `https://github.com/laxman243ops?tab=repositories`.
+Once each project has its own repo, replace the matching `href` in both the
+project card and its `DETAILS` entry with the direct repo URL.
 
 ## Deploying on GitHub Pages
 
-1. Push `index.html`, `style.css`, `README.md`, and your `assets/` folder to
+1. Push `index.html`, `style.css`, `README.md`, and your photos to
    the `main` branch of `laxman243ops/laxman243ops.github.io`.
 2. In the repo, go to **Settings → Pages** and confirm the source is set to
    deploy from `main` (a `username.github.io` repo usually does this
@@ -94,7 +90,7 @@ its own repo, replace the matching `href` in both the project card and its
 
 No build tools required — just serve the folder:
 
-```bash
+```
 python3 -m http.server 8000
 # then open http://localhost:8000
 ```
@@ -103,4 +99,4 @@ python3 -m http.server 8000
 
 Design and build assembled with Claude. Content sourced from Butcha Laxmana
 Rao's resume (June 2026) — update `index.html` directly as your experience,
-projects, and certifications grow.
+projects, and certifications grow. Now includes 5 projects and 9 certifications.
