@@ -13,53 +13,81 @@ step, no framework: just `index.html`, `style.css`, and vanilla JS.
 
 ```
 .
-├── index.html      → all page content and structure
-├── style.css       → the entire design system (colors, type, layout)
+├── index.html          → all page content and structure
+├── style.css            → the entire design system (colors, type, layout)
+├── dpe.jpg               → hero photo
+├── background.jpeg       → about-section photo
 └── README.md
 ```
 
-There are no image assets wired in — the design doesn't use a hero photo.
-
 ## Design concept
 
-A "query console / data ledger" theme: the hero types out a SQL query and
-returns your profile as a query result, skills are shown as schema tables
-(one card per category, fields as chips), and each project is an expandable
-record rather than a static card. Palette is a paper-toned background with
-pine green and cobalt accents; type is Space Grotesk (display), IBM Plex
-Sans (body), and IBM Plex Mono (data/labels).
+The whole page is framed as a running Jupyter notebook, `profile.ipynb`.
+Code cells (`In [1]:` / `Out[1]:`) define your profile, skills, and projects
+as Python objects and "run" into rendered output; plain sections (about,
+experience, education, certifications) sit in markdown cells with no
+execution prompt, the same way real notebooks mix code and markdown. Dark
+editor palette with a genuine syntax-highlight hue set — blue for keywords,
+amber for strings, green for function names / output — set in JetBrains
+Mono (code), Sora (headings), and Work Sans (body).
 
 ## Features
 
-- **Typed hero query** — the SQL query in the hero types itself out on load
-  and "returns" a one-row result table with your name, role, location, and
-  status. Skips straight to the final state if `prefers-reduced-motion` is
-  set.
-- **Schema-style skills grid** — each skill category (languages, data & ML,
-  GenAI, cloud, etc.) renders as its own table card with individual skills
-  as fields, instead of animated progress bars.
+- **"Run All" button** in the toolbar replays the profile cell's output
+  animation and scrolls back to the top, like re-executing a notebook.
+  Individual cells (like the hero) also have their own ▶ run button.
+- **Code cells vs. markdown cells** are visually distinct — code cells get
+  a bordered box, execution prompt, and syntax-highlighted Python; markdown
+  cells blend into the page like rendered prose, no prompt in the gutter.
+- **Schema-style skills output** — each skill category renders as its own
+  card, like the printed output of a Python dict.
 - **Expandable project records** — built with native `<details>/<summary>`,
   so each project opens/closes on click *and* is keyboard-accessible with
   no extra JS.
-- **Ledger-style experience & education rows**, and a certifications table.
-- Fully responsive, keyboard-navigable, and respects `prefers-reduced-motion`.
+- Fully responsive, keyboard-navigable, and respects `prefers-reduced-motion`
+  (skips straight to the settled state instead of animating).
+
+## Photos
+
+Two photos are wired into `index.html`, matching the filenames already in
+this repo:
+
+- `dpe.jpg` — a small framed portrait inside the profile cell's `Out[1]:`.
+- `background.jpeg` — shown as an "attached image" inside the About
+  markdown cell, captioned `Image('background.jpeg')`.
+
+Both are referenced by relative path, so keep the files at the repo root
+with these exact names and they'll show up automatically. If either file is
+missing or fails to load:
+
+- `dpe.jpg` falls back to a "BLR" monogram badge in the same frame.
+- `background.jpeg`'s image block hides itself entirely — nothing breaks.
+
+To swap either photo later, replace the file (same filename) or update the
+`src` in `index.html`.
 
 ## Editing content
 
 Everything lives directly in `index.html`, in plain HTML — there's no data
 object to keep in sync:
 
-- **Hero** — name, role, location, summary, contact chips, and stat row near
-  the top of `<body>`.
-- **Skills** — each `.schema-card` in the `#skills` section is one category;
-  add or remove `<span class="field">` chips inside `.schema-card__body`.
-- **Experience / Education** — each is a `.ledger-row` inside a `.ledger`
-  block: date/meta on the left, role/org/bullets on the right.
-- **Projects** — each project is a `<details class="record">` block in the
-  `#projects` section. Edit the title, period, tags (`.field` spans), bullet
-  points, and the repo link's `href`.
-- **Certifications** — rows in the `<table class="cert-table">` inside
-  `#certifications`.
+- **Profile cell** (`#profile`) — name, role, location, summary, stat row,
+  and contact chips are in the `.output-profile` block. The `<pre
+  class="cell__code">` above it is decorative Python — update it to match
+  if you change the facts below.
+- **About** (`#about`) — prose paragraphs plus the `background.jpeg` image
+  block in `.md-body`.
+- **Skills** (`#skills`) — each `.schema-card` in the `Out[2]:` output is
+  one category; add or remove `<span class="field">` chips inside
+  `.schema-card__body`. The `<pre>` above is a matching (decorative) Python
+  dict — keep it roughly in sync.
+- **Experience / Education** — each is a `.ledger-row`: date/meta on the
+  left, role/org/bullets on the right.
+- **Projects** (`#projects`) — each project is a `<details class="record">`
+  block inside `Out[3]:`. Edit the title, period, tags (`.field` spans),
+  bullet points, and the repo link's `href`.
+- **Certifications** — rows in the `<table class="cert-table">`.
+- **Contact** (`#contact`) — chips inside `Out[4]:`.
 
 Repository links currently point to
 `https://github.com/laxman243ops?tab=repositories`. Once each project has
@@ -68,8 +96,8 @@ repo URL.
 
 ## Deploying on GitHub Pages
 
-1. Push `index.html`, `style.css`, and `README.md` to the `main` branch of
-   `laxman243ops/laxman243ops.github.io`.
+1. Push `index.html`, `style.css`, your photos, and `README.md` to the
+   `main` branch of `laxman243ops/laxman243ops.github.io`.
 2. In the repo, go to **Settings → Pages** and confirm the source is set to
    deploy from `main` (a `username.github.io` repo usually does this
    automatically).
