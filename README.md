@@ -1,102 +1,587 @@
-# laxman243opsgithubio
+/* =========================================================
+   Butcha Laxmana Rao — portfolio
+   Design concept: "query console / data ledger"
+   ========================================================= */
 
-Personal portfolio for **Butcha Laxmana Rao** — Data Analytics & Gen AI —
-built as a static site for GitHub Pages. No build step, no framework:
-just `index.html`, `style.css`, and vanilla JS.
+:root {
+  --paper: #EEF0E8;
+  --paper-alt: #E4E7DA;
+  --panel-line: #C7CBB6;
+  --ink: #15201A;
+  --ink-soft: #4C574C;
+  --ink-faint: #7A8577;
 
-**Live site:** <https://laxman243ops.github.io>
-**Source:** <https://github.com/laxman243ops/laxman243ops.github.io>
+  --pine: #1F5C45;
+  --pine-soft: #DDE7DE;
+  --cobalt: #29508A;
+  --cobalt-soft: #DDE4EE;
+  --ochre: #92661F;
+  --ochre-soft: #EFE4CD;
 
----
+  --code-bg: #14201A;
+  --code-ink: #E9EEE6;
+  --code-line: #2B3A30;
+  --code-pine: #6FCB9F;
+  --code-cobalt: #7FB0E8;
+  --code-ochre: #E3B872;
 
-## What's in here
+  --radius-sm: 3px;
+  --radius-md: 6px;
 
-```
-.
-├── index.html          → all page content and structure
-├── style.css           → the entire design system (colors, type, layout, animation)
-├── dpe.jpg              → hero photo (included)
-├── background.jpeg      → about-section photo (included)
-├── intro.mp3             → optional voice intro clip (add this yourself — see below)
-└── README.md
-```
+  --font-display: "Space Grotesk", "Segoe UI", sans-serif;
+  --font-body: "IBM Plex Sans", "Segoe UI", sans-serif;
+  --font-mono: "IBM Plex Mono", "Consolas", monospace;
 
-## Features
+  --maxw: 1120px;
+}
 
-- **Dashboard-styled design** — dark, graph-paper background, teal/amber accents,
-  monospace data labels, self-drawing hero chart.
-- **Click-to-expand detail modals** — every project, the internship, education,
-  and each certification opens a full breakdown when clicked (or focused + Enter).
-- **Animated skill bars & stat counters** that fill in as you scroll to them.
-- **Voice-reactive hero photo** — add a short `intro.mp3` recording of
-  yourself and the play button shows a live soundwave that reacts to your
-  actual voice, with the photo frame glowing in sync. If no audio file is
-  present, the whole widget hides itself automatically — nothing breaks.
-- Fully responsive, keyboard-navigable, and respects `prefers-reduced-motion`.
+@media (prefers-reduced-motion: no-preference) {
+  html { scroll-behavior: smooth; }
+}
 
-## Photos
+* { box-sizing: border-box; }
 
-Your two photos live at the repo root and are already wired into `index.html`:
+html, body {
+  margin: 0;
+  padding: 0;
+}
 
-- `dpe.jpg` — the circular hero photo.
-- `background.jpeg` — the tilted photo in the About section.
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  background-image:
+    linear-gradient(var(--panel-line) 1px, transparent 1px);
+  background-size: 100% 42px;
+  background-attachment: local;
+}
 
-To swap either one later, just replace the file (keep the same filename) or
-update the `src` in `index.html` to point at a new file. If a photo is ever
-missing, the page falls back to a monogram badge instead of a broken icon.
+body::before {
+  content: "";
+}
 
-## Adding a voice clip
+a {
+  color: var(--cobalt);
+  text-decoration: none;
+}
+a:hover { text-decoration: underline; }
 
-There's no `intro.mp3` in this repo yet. Two ways to get one:
+:focus-visible {
+  outline: 2px solid var(--cobalt);
+  outline-offset: 3px;
+}
 
-1. **Record yourself** — a 5–10 second "Hi, I'm Laxman, welcome to my
-   portfolio" clip from your phone works fine. Export as `.mp3`.
-2. **Generate one with a TTS tool** — services like ElevenLabs or Play.ht
-   can produce a natural-sounding clip from typed text if you'd rather not
-   record your own voice.
+.wrap {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 0 28px;
+}
 
-Upload the file to the repo root as `intro.mp3`, commit, and the play button
-in the hero will start showing a live waveform that reacts to it — no code
-changes needed. Until that file exists, the voice-intro widget stays hidden
-automatically.
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  letter-spacing: 0.04em;
+  color: var(--ink-faint);
+  text-transform: lowercase;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 18px;
+}
+.eyebrow::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  background: var(--pine);
+  border-radius: 50%;
+  flex: none;
+}
 
-## Editing content
+h1, h2, h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  margin: 0;
+  color: var(--ink);
+}
 
-Everything lives in two places in `index.html`:
+/* ---------- top bar ---------- */
 
-- The **visible cards/sections** (projects, experience, certifications) —
-  edit the text directly in the HTML.
-- The **`DETAILS` object** near the bottom of the `<script>` block — this
-  powers the "click for more" modal for each project, the internship,
-  education, and every certification. Each entry has an `eyebrow`, `title`,
-  `tags`, `summary`, `points` (bullet list), and optional `links`. Keep the
-  `data-detail="proj1"` attribute on a card in sync with its key in
-  `DETAILS` (e.g. `proj1`) if you rename anything.
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: rgba(238, 240, 232, 0.92);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid var(--panel-line);
+}
 
-Repository links currently point to `https://github.com/laxman243ops?tab=repositories`.
-Once each project has its own repo, replace the matching `href` in both the
-project card and its `DETAILS` entry with the direct repo URL.
+.topbar__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 60px;
+  gap: 20px;
+}
 
-## Deploying on GitHub Pages
+.topbar__brand {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  color: var(--ink);
+  white-space: nowrap;
+}
+.topbar__brand span { color: var(--pine); }
 
-1. Push `index.html`, `style.css`, `README.md`, and your photos to
-   the `main` branch of `laxman243ops/laxman243ops.github.io`.
-2. In the repo, go to **Settings → Pages** and confirm the source is set to
-   deploy from `main` (a `username.github.io` repo usually does this
-   automatically).
-3. Your site is live at `https://laxman243ops.github.io` within a few minutes.
+.topbar__nav {
+  display: flex;
+  gap: 4px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  font-family: var(--font-mono);
+  font-size: 13px;
+}
+.topbar__nav::-webkit-scrollbar { display: none; }
 
-## Running locally
+.topbar__nav a {
+  color: var(--ink-soft);
+  padding: 7px 11px;
+  border-radius: var(--radius-sm);
+  white-space: nowrap;
+}
+.topbar__nav a:hover {
+  background: var(--paper-alt);
+  color: var(--ink);
+  text-decoration: none;
+}
 
-No build tools required — just serve the folder:
+/* ---------- hero ---------- */
 
-```
-python3 -m http.server 8000
-# then open http://localhost:8000
-```
+.hero {
+  padding: 72px 0 56px;
+}
 
-## Credits
+.hero__top {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 44px;
+  align-items: start;
+}
 
-Design and build assembled with Claude. Content sourced from Butcha Laxmana
-Rao's resume (June 2026) — update `index.html` directly as your experience,
-projects, and certifications grow. Now includes 5 projects and 9 certifications.
+.hero__heading h1 {
+  font-size: clamp(34px, 4.4vw, 52px);
+  line-height: 1.08;
+}
+
+.hero__role {
+  font-family: var(--font-mono);
+  font-size: 15px;
+  color: var(--pine);
+  margin: 14px 0 0;
+}
+
+.hero__location {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--ink-faint);
+  margin: 8px 0 0;
+}
+
+.hero__summary {
+  margin: 22px 0 0;
+  max-width: 46ch;
+  color: var(--ink-soft);
+  font-size: 15.5px;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 26px;
+}
+
+.chip {
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  padding: 7px 12px;
+  border: 1px solid var(--panel-line);
+  border-radius: 999px;
+  color: var(--ink-soft);
+  background: var(--paper-alt);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.chip svg { width: 13px; height: 13px; flex: none; }
+.chip--link {
+  color: var(--ink);
+  background: #fff;
+}
+.chip--link:hover {
+  border-color: var(--cobalt);
+  color: var(--cobalt);
+  text-decoration: none;
+}
+
+/* query console */
+
+.console {
+  background: var(--code-bg);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: 0 18px 40px -22px rgba(20, 32, 26, 0.55);
+  border: 1px solid var(--code-line);
+}
+
+.console__bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 14px;
+  border-bottom: 1px solid var(--code-line);
+}
+.console__dot {
+  width: 9px; height: 9px; border-radius: 50%;
+  background: var(--code-line);
+}
+.console__title {
+  margin-left: 6px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--ink-faint);
+}
+
+.console__body {
+  padding: 18px 18px 6px;
+  font-family: var(--font-mono);
+  font-size: 13.5px;
+  color: var(--code-ink);
+  min-height: 128px;
+}
+
+.console__line { white-space: pre; }
+.console__kw { color: var(--code-cobalt); }
+.console__str { color: var(--code-ochre); }
+.console__cursor {
+  display: inline-block;
+  width: 7px; height: 15px;
+  background: var(--code-pine);
+  vertical-align: -2px;
+  margin-left: 2px;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .console__cursor { animation: blink 1s steps(1) infinite; }
+}
+@keyframes blink { 50% { opacity: 0; } }
+
+.console__result {
+  border-top: 1px dashed var(--code-line);
+  margin-top: 14px;
+  padding: 14px 0 16px;
+  opacity: 0;
+  transform: translateY(4px);
+}
+.console__result.is-visible {
+  opacity: 1;
+  transform: none;
+  transition: opacity .5s ease, transform .5s ease;
+}
+
+.console__note {
+  color: var(--ink-faint);
+  font-size: 12px;
+  margin: 0 0 10px;
+}
+
+.rtable {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12.5px;
+}
+.rtable th {
+  text-align: left;
+  color: var(--code-pine);
+  font-weight: 500;
+  padding: 4px 10px 6px 0;
+  border-bottom: 1px solid var(--code-line);
+}
+.rtable td {
+  padding: 8px 10px 8px 0;
+  color: var(--code-ink);
+  vertical-align: top;
+}
+.rtable .tag-open {
+  color: var(--code-pine);
+}
+
+/* ---------- sections generic ---------- */
+
+section {
+  padding: 56px 0;
+  border-top: 1px solid var(--panel-line);
+}
+
+.section__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 10px 24px;
+  margin-bottom: 30px;
+}
+
+.section__head h2 {
+  font-size: 26px;
+}
+
+.section__count {
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  color: var(--ink-faint);
+}
+
+/* about */
+
+.about__body {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  max-width: 74ch;
+}
+.about__comment {
+  font-family: var(--font-mono);
+  color: var(--ink-faint);
+  font-size: 13px;
+  margin: 0;
+}
+.about__text {
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: 16px;
+}
+
+/* skills — schema tables */
+
+.schema-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 18px;
+}
+
+.schema-card {
+  background: var(--paper-alt);
+  border: 1px solid var(--panel-line);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.schema-card__head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--panel-line);
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  color: var(--pine);
+  background: #fff;
+}
+.schema-card__head::before {
+  content: "table";
+  color: var(--ink-faint);
+}
+
+.schema-card__body {
+  padding: 12px 14px 14px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.field {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  padding: 4px 9px;
+  background: #fff;
+  border: 1px solid var(--panel-line);
+  border-radius: var(--radius-sm);
+  color: var(--ink-soft);
+}
+
+/* experience / education ledger */
+
+.ledger {
+  border-top: 1px solid var(--panel-line);
+}
+.ledger-row {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 24px;
+  padding: 22px 0;
+  border-bottom: 1px solid var(--panel-line);
+}
+.ledger-row__meta {
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  color: var(--ink-faint);
+}
+.ledger-row__meta .date { display: block; color: var(--cobalt); margin-bottom: 4px; }
+.ledger-row h3 {
+  font-size: 18px;
+  margin-bottom: 4px;
+}
+.ledger-row__org {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--ink-soft);
+  margin-bottom: 10px;
+}
+.ledger-row ul {
+  margin: 0;
+  padding-left: 18px;
+  color: var(--ink-soft);
+  font-size: 15px;
+}
+.ledger-row li + li { margin-top: 6px; }
+
+.stat-row {
+  display: flex;
+  gap: 28px;
+  flex-wrap: wrap;
+  margin-top: 16px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+}
+.stat-row b { color: var(--pine); font-weight: 600; }
+
+/* projects — accordion records */
+
+.records {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.record {
+  border: 1px solid var(--panel-line);
+  border-radius: var(--radius-md);
+  background: var(--paper-alt);
+  overflow: hidden;
+}
+
+.record > summary {
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px 18px;
+}
+.record > summary::-webkit-details-marker { display: none; }
+
+.record__title-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.record__title { font-family: var(--font-display); font-size: 17px; font-weight: 600; }
+.record__period { font-family: var(--font-mono); font-size: 12px; color: var(--ink-faint); }
+
+.record__toggle {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--ink-faint);
+  border: 1px solid var(--panel-line);
+  border-radius: 999px;
+  padding: 5px 11px;
+  flex: none;
+}
+.record[open] .record__toggle::before { content: "− collapse"; }
+.record__toggle::before { content: "+ expand"; }
+
+.record__body {
+  padding: 0 18px 20px;
+  border-top: 1px solid var(--panel-line);
+}
+.record__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 16px 0 14px;
+}
+.record__body ul {
+  margin: 0 0 14px;
+  padding-left: 18px;
+  color: var(--ink-soft);
+  font-size: 15px;
+}
+.record__body li + li { margin-top: 6px; }
+.record__link {
+  font-family: var(--font-mono);
+  font-size: 13px;
+}
+
+/* certifications table */
+
+.cert-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.cert-table th {
+  text-align: left;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--ink-faint);
+  font-weight: 500;
+  padding: 0 14px 10px 0;
+  border-bottom: 1px solid var(--panel-line);
+}
+.cert-table td {
+  padding: 13px 14px 13px 0;
+  border-bottom: 1px solid var(--panel-line);
+  font-size: 15px;
+  vertical-align: top;
+}
+.cert-table td:first-child { color: var(--ink); }
+.cert-table td:last-child { color: var(--ink-soft); font-family: var(--font-mono); font-size: 13px; }
+
+/* contact / footer */
+
+.contact {
+  text-align: left;
+}
+.contact__text {
+  max-width: 56ch;
+  color: var(--ink-soft);
+  font-size: 16px;
+  margin: 0 0 24px;
+}
+
+footer {
+  border-top: 1px solid var(--panel-line);
+  padding: 26px 0 40px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--ink-faint);
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* ---------- responsive ---------- */
+
+@media (max-width: 860px) {
+  .hero__top { grid-template-columns: 1fr; }
+  .ledger-row { grid-template-columns: 1fr; gap: 6px; }
+  .topbar__brand { display: none; }
+}
+
+@media (max-width: 560px) {
+  .wrap { padding: 0 18px; }
+  section { padding: 42px 0; }
+  .cert-table th:nth-child(2), .cert-table td:nth-child(2) { display: none; }
+}
